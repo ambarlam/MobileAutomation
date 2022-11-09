@@ -12,11 +12,8 @@ public class LoginPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//android.widget.ScrollView[@content-desc=\"test-Login\"]/android.view.ViewGroup/android.widget.ImageView[1]")
-	public WebElement imgSwagLabs;
-	
 	@FindBy(how = How.XPATH, using = "//android.widget.EditText[@content-desc=\"test-Username\"]")
-	private WebElement txtUsername;
+	public WebElement txtUsername;
 	
 	@FindBy(how = How.XPATH, using = "//android.widget.EditText[@content-desc=\"test-Password\"]")
 	private WebElement txtPassword;
@@ -24,9 +21,16 @@ public class LoginPage {
 	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"test-LOGIN\"]")
 	private WebElement btnLogin;
 	
+	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"test-Error message\"]/android.widget.TextView")
+	public WebElement txtErrorMessage;
+	
 	public void login(String username, String password) {
 		txtUsername.sendKeys(username);
 		txtPassword.sendKeys(password);
 		btnLogin.click();
+	}
+	
+	public String getErrorMessage() {
+		return txtErrorMessage.getText();
 	}
 }
