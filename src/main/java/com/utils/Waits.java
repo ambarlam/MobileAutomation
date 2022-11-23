@@ -15,6 +15,13 @@ public class Waits {
 		this.driver = driver;
 	}
 	
+	// Overloaded method with default wait time in seconds as 10
+	public void untilElementIsVisible(WebElement webElement) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(webElement));
+	}
+	
+	// Overloaded method for customized wait time
 	public void untilElementIsVisible(int timeout, WebElement webElement) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
 		wait.until(ExpectedConditions.visibilityOf(webElement));
