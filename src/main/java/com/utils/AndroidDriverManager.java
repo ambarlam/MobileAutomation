@@ -11,34 +11,62 @@ import io.appium.java_client.android.AndroidDriver;
 public class AndroidDriverManager {
 	private AndroidDriver driver;
 	
+	private String setApplicationName() {
+		String SWAG_LABS = "";
+		if(ConfigurationReader.getConfigurations().getEnvironmentToRun().equalsIgnoreCase(Literals.LOCAL)) {
+			File file = new File(Literals.RESOURCES_PATH + ConfigurationReader.getConfigurations().getApkFileName());
+			SWAG_LABS = file.getAbsolutePath();
+		} else if(ConfigurationReader.getConfigurations().getEnvironmentToRun().equalsIgnoreCase(Literals.SAUCELABS)){
+			SWAG_LABS = "storage:filename=" + ConfigurationReader.getConfigurations().getApkFileName();
+		}
+		return SWAG_LABS;
+	}
+	
+	private DesiredCapabilities setSauceLabsOptions() {
+		DesiredCapabilities sauceOptions = new DesiredCapabilities();
+		sauceOptions.setCapability("name", ConfigurationReader.getConfigurations().getSauceReportsName());
+//		sauceOptions.setCapability("build", "appium-build-78FJ3");
+		return sauceOptions;
+	}
+	
 	private DesiredCapabilities setCapabilities() {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		String deviceName = "Pixel 4 API 29";
-		String platformName = "Android";
-		String platformVersion = "10.0";
-		String appWaitActivity = "com.swaglabsmobileapp.MainActivity";
-		String automationName = "UiAutomator2";
+		capabilities.setCapability("platformName", ConfigurationReader.getConfigurations().getPlatformName());
+		capabilities.setCapability("deviceName", ConfigurationReader.getConfigurations().getDeviceName());
+		capabilities.setCapability("platformVersion", ConfigurationReader.getConfigurations().getPlatformVersion());
+		capabilities.setCapability("appWaitActivity", Literals.appWaitActivity);
+		capabilities.setCapability("automationName", Literals.automationName);
+		capabilities.setCapability("app", setApplicationName());
 		
-		File file = new File("src/test/resources/SauceLabs.Sample.App.2.7.1.apk");
-		String SWAG_LABS = file.getAbsolutePath();
-		
-		capabilities.setCapability("deviceName", deviceName);
-		capabilities.setCapability("platformName", platformName);
-		capabilities.setCapability("platformVersion", platformVersion);
-		capabilities.setCapability("appWaitActivity", appWaitActivity);
-		capabilities.setCapability("automationName", automationName);
-		capabilities.setCapability("app", SWAG_LABS);
-		
+		if(ConfigurationReader.getConfigurations().getEnvironmentToRun().equalsIgnoreCase(Literals.SAUCELABS)) {
+			capabilities.setCapability("sauce:options", setSauceLabsOptions());
+		}
 		return capabilities;
 	}
 	
 	private AndroidDriver createDriver() {
-		final String APPIUM_SERVER = "http://localhost:4723/wd/hub";
+		String url = "";
+		
+		// TODO: variables should be non case sensitive
+		switch(ConfigurationReader.getConfigurations().getEnvironmentToRun()) {
+		case Literals.LOCAL:
+			url = Literals.APPIUM_SERVER;
+			break;
+		case Literals.SAUCELABS:
+			url = "https://" + ConfigurationReader.getConfigurations().getSauceUsername() + ":" 
+					+ ConfigurationReader.getConfigurations().getSauceAccessKey() 
+					+ ConfigurationReader.getConfigurations().getSauceRegion() + "/wd/hub";
+			break;
+		default:
+			// TODO: Decent default message
+			System.out.println("");
+		}
 		
 		try {
-			driver = new AndroidDriver(new URL(APPIUM_SERVER), setCapabilities());
+			driver = new AndroidDriver(new URL(url), setCapabilities());
 		} catch (MalformedURLException e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return driver;
 	}
