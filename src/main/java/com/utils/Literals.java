@@ -19,10 +19,8 @@ public class Literals {
 	public static final String SAUCELABS = "SAUCELABS";
 	public static final String LOCAL = "LOCAL";
 	
-	// Temporary section for configurations
-	// TODO: To be be put in a config file and read through a reader class
+	// App configuration constants
 	public static String APPIUM_SERVER = "http://localhost:4723/wd/hub";
-	
 	public static String appWaitActivity = "com.swaglabsmobileapp.MainActivity";
 	public static String automationName = "UiAutomator2";
 }
