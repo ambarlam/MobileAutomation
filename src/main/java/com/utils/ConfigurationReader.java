@@ -26,6 +26,10 @@ public class ConfigurationReader {
 		return properties.getProperty("PLATFORM_NAME");
 	}
 	
+	public String getAutomationName() {
+		return properties.getProperty("AUTOMATION_NAME");
+	}
+	
 	public String getPlatformVersion() {
 		return properties.getProperty("PLATFORM_VERSION");
 	}
@@ -34,8 +38,8 @@ public class ConfigurationReader {
 		return properties.getProperty("DEVICE_NAME");
 	}
 	
-	public String getApkFileName() {
-		return properties.getProperty("APK_FILE_NAME");
+	public String getAppFileName() {
+		return properties.getProperty("APP_FILE_NAME");
 	}
 	
 	public String getSauceUsername() {

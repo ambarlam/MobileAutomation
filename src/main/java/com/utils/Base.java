@@ -1,18 +1,18 @@
 package com.utils;
 
 public class Base {
-	private AndroidDriverManager androidDriverManager;
+	private DriverManager driverManager;
 	private PageObjectManager pageObjectManager;
 	private Waits waits;
 	
 	public Base() {
-		androidDriverManager = new AndroidDriverManager();
-		pageObjectManager = new PageObjectManager(androidDriverManager.getDriver());
-		waits = new Waits(androidDriverManager.getDriver());
+		driverManager = new DriverManager();
+		pageObjectManager = new PageObjectManager(driverManager.getDriver());
+		waits = new Waits(driverManager.getDriver());
 	}
 	
-	public AndroidDriverManager getAndroidDriverManager() {
-		return androidDriverManager;
+	public DriverManager getAndroidDriverManager() {
+		return driverManager;
 	}
 	
 	public PageObjectManager getPageObjectManager() {

@@ -6,12 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.AppiumDriver;
 
 public class Waits {
-	AndroidDriver driver;
+	AppiumDriver driver;
 	
-	public Waits(AndroidDriver driver) {
+	public Waits(AppiumDriver driver) {
 		this.driver = driver;
 	}
 	

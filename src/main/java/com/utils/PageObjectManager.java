@@ -3,14 +3,14 @@ package com.utils;
 import com.pageobjects.HeaderBanner;
 import com.pageobjects.LoginPage;
 
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.AppiumDriver;
 
 public class PageObjectManager {
-	private AndroidDriver driver;
+	private AppiumDriver driver;
 	private LoginPage loginPage;
 	private HeaderBanner headerBanner;
 	
-	public PageObjectManager(AndroidDriver driver) {
+	public PageObjectManager(AppiumDriver driver) {
 		this.driver = driver;
 	}
 	

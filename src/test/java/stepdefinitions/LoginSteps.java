@@ -14,14 +14,14 @@ import io.cucumber.java.en.When;
 
 public class LoginSteps {
 	Base base;
-	LoginPage loginPage;
 	HeaderBanner headerBanner;
+	LoginPage loginPage;
 	Waits waits;
 	
 	public LoginSteps(Base base) {
 		this.base = base;
-		loginPage = base.getPageObjectManager().getLoginPage();
 		headerBanner = base.getPageObjectManager().getHeaderBanner();
+		loginPage = base.getPageObjectManager().getLoginPage();
 		waits = base.getWaits();
 	}
 	
