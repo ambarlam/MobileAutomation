@@ -23,4 +23,7 @@ public class Literals {
 	public static String APPIUM_SERVER = "http://localhost:4723/wd/hub";
 	public static String appWaitActivity = "com.swaglabsmobileapp.MainActivity";
 	public static String automationName = "UiAutomator2";
+	
+	// Products
+	public static String SINGLE_PRODUCT_NAME = "Sauce Labs Backpack";
 }
