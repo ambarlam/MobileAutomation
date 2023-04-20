@@ -43,11 +43,10 @@ public class AddToCartSteps{
 		waits.untilElementIsVisible(headerBanner.icnMenu);
 	}
 	
-	@When("^I click Add to cart button of the product Sauce Labs Backpack$")
+	@When("^I click Add to cart button of the product Sauce Labs Backpack")
 	public void I_click_Add_to_cart_button_of_the_product_Sauce_Labs_Backpack()
 	{
-		inventoryPage.AddItemToCart();
-		//inventoryPage.AddItem(Literals.SINGLE_PRODUCT_NAME);
+		inventoryPage.AddItem(Literals.SINGLE_PRODUCT_NAME);
 	}
 	
 	@When("^I click on the View cart button$")
@@ -77,7 +76,7 @@ public class AddToCartSteps{
 		Assert.assertTrue(headerBanner.btnCheckout.isDisplayed());
 	}
 	
-	@And("^the product name shows Sauce Labs Backpack$")
+	@And("^the product name shows Sauce Labs Bike Light")
 	public void the_product_name_is_Sauce_Labs_Backpacks()
 	{
 		String actualItem = cartPage.ValidateItemIsAdded(Literals.SINGLE_PRODUCT_NAME);

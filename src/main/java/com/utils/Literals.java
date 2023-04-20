@@ -24,6 +24,6 @@ public class Literals {
 	public static String appWaitActivity = "com.swaglabsmobileapp.MainActivity";
 	public static String automationName = "UiAutomator2";
 	
-	// Products
-	public static String SINGLE_PRODUCT_NAME = "Sauce Labs Backpack";
+	// Product
+	public static String SINGLE_PRODUCT_NAME = "Sauce Labs Bike Light";
 }

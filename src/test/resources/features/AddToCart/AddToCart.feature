@@ -13,4 +13,4 @@ Feature: Add to cart
     
     When I click on the View cart button
     Then I am redirect to the Cart page
-    And the product name shows Sauce Labs Backpack
+    And the product name shows Sauce Labs Bike Light

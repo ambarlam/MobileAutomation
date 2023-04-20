@@ -13,7 +13,7 @@ public class CartPage {
 	
 	AndroidDriver driver;
 	
-	// Dynamic checking of item added on the cart
+	// Checks the Item is added to the cart
 	public String ValidateItemIsAdded(String itemName)
 	{
 		String itemNameXPath = "//android.widget.TextView[@text='" + itemName + "']";

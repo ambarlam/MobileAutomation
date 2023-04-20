@@ -19,34 +19,37 @@ public class InventoryPage {
 	
 	AndroidDriver driver;
 	
-	@FindBy(how = How.XPATH, using = "//android.widget.TextView[@content-desc=\"test-Item title\"]")
-	public static WebElement lblProductName;
-	
-	@FindBy(how = How.XPATH, using = "(//android.view.ViewGroup[@content-desc=\"test-ADD TO CART\"])[1]")
-	public WebElement btnAddToCart;
-	
 	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"test-REMOVE\"]")
 	public WebElement btnRemove;
 	
-	public void AddItemToCart()
-	{
-		btnAddToCart.click();
-	}
+	List<String> productList = new ArrayList<>();
 	
-	// Dynamic adding of the item
+	// Add the selected item to the cart
 	public void AddItem(String itemSelected)
 	{
-		List<String> productList = new ArrayList<String>();
-		productList.add(lblProductName.getText());
-
+		GetAllItemName();
+		
 		for(String itemName : productList)
 		{
-			if(itemSelected.equals(itemName))
+			if(itemName.equals(itemSelected))
 			{
-				driver.findElement(By.xpath("(//android.view.ViewGroup[@content-desc=\\\\\\\"test-ADD TO CART\\\\\\\"])[" + productList.indexOf(itemName) + "]")).click();
+				WebElement btnAddToCart = driver.findElement(By.xpath("(//android.view.ViewGroup[@content-desc=\"test-ADD TO CART\"])[" + productList.indexOf(itemName) + "]"));
+				btnAddToCart.click();
 			}
 		}
 	}
+	
+	// Get all product name
+	public void GetAllItemName()
+	{
+		productList.add("INDEX ZERO");
+		List<WebElement> list = driver.findElements(By.xpath("//android.widget.TextView[@content-desc=\"test-Item title\"]"));
+		
+		for(WebElement item : list)
+		{
+			productList.add(item.getText());
+		}
+		
+	}
 
 }
-
