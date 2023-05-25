@@ -14,8 +14,7 @@ public class CartPage {
 	AndroidDriver driver;
 	
 	// Checks the Item is added to the cart
-	public String ValidateItemIsAdded(String itemName)
-	{
+	public String ValidateItemIsAdded(String itemName) {
 		String itemNameXPath = "//android.widget.TextView[@text='" + itemName + "']";
 		return driver.findElement(By.xpath(itemNameXPath)).getText();
 	}

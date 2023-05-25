@@ -25,14 +25,11 @@ public class InventoryPage {
 	List<String> productList = new ArrayList<>();
 	
 	// Add the selected item to the cart
-	public void AddItem(String itemSelected)
-	{
+	public void AddItem(String itemSelected) {
 		GetAllItemName();
 		
-		for(String itemName : productList)
-		{
-			if(itemName.equals(itemSelected))
-			{
+		for(String itemName : productList) {
+			if(itemName.equals(itemSelected)) {
 				WebElement btnAddToCart = driver.findElement(By.xpath("(//android.view.ViewGroup[@content-desc=\"test-ADD TO CART\"])[" + productList.indexOf(itemName) + "]"));
 				btnAddToCart.click();
 			}
@@ -40,16 +37,13 @@ public class InventoryPage {
 	}
 	
 	// Get all product name
-	public void GetAllItemName()
-	{
+	public void GetAllItemName() {
 		productList.add("INDEX ZERO");
 		List<WebElement> list = driver.findElements(By.xpath("//android.widget.TextView[@content-desc=\"test-Item title\"]"));
 		
-		for(WebElement item : list)
-		{
+		for(WebElement item : list) {
 			productList.add(item.getText());
 		}
-		
 	}
 
 }

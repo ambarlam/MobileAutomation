@@ -8,8 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import io.appium.java_client.android.AndroidDriver;
 
 public class HeaderBanner {
-	public HeaderBanner(AndroidDriver driver)
-	{
+	public HeaderBanner(AndroidDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
 	
@@ -25,8 +24,7 @@ public class HeaderBanner {
 	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"test-CHECKOUT\"]")
 	public WebElement btnCheckout;
 	
-	public void ViewCart()
-	{
+	public void ViewCart() {
 		btnCart.click();
 	}
 }
