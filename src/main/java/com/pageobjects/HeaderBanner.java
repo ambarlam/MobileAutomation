@@ -14,4 +14,17 @@ public class HeaderBanner {
 	
 	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"test-Menu\"]/android.view.ViewGroup/android.widget.ImageView")
 	public WebElement icnMenu;
+	
+	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"test-Cart\"]/android.view.ViewGroup")
+	public WebElement btnCart;
+	
+	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"test-Cart\"]/android.view.ViewGroup/android.view.ViewGroup")
+	public WebElement cartBadge;
+	
+	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"test-CHECKOUT\"]")
+	public WebElement btnCheckout;
+	
+	public void ViewCart() {
+		btnCart.click();
+	}
 }
